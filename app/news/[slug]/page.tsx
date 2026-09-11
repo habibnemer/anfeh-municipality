@@ -45,9 +45,15 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
       <section className="section-padding" style={{background:'var(--color-warm-white)'}}>
         <div className="container-site max-w-3xl">
           {/* Cover image */}
-          <div className="aspect-video w-full mb-10 flex items-center justify-center" style={{background:'linear-gradient(135deg,#E2DAD0,#C4BAA8)'}}>
-            <p className="text-xs tracking-widest uppercase" style={{color:'var(--color-sand)'}}>Photo Placeholder — replace with official image</p>
-          </div>
+          {article.image && (
+            <div className="w-full mb-10 overflow-hidden" style={{height: 420}}>
+              <img
+                src={article.image}
+                alt={article.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
 
           {/* Content */}
           <div className="prose max-w-none">
@@ -56,10 +62,6 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                 {para}
               </p>
             ))}
-          </div>
-
-          <div className="mt-10 p-4 text-xs border" style={{background:'var(--color-cream)',borderColor:'var(--color-stone)',color:'var(--color-muted)'}}>
-            ℹ️ This is placeholder content for demonstration purposes. Replace with verified, officially approved content from Anfeh Municipality.
           </div>
         </div>
       </section>
