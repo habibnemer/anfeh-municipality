@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Design Tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --color-navy:       #1A2E4A;
+  --color-navy-dark:  #111E30;
+  --color-warm-white: #FAF8F5;
+  --color-cream:      #F3EFE8;
+  --color-charcoal:   #1C1C1A;
+  --color-muted:      #6B6B6B;
+  --color-limestone:  #A89880;
+  --color-stone:      #E2DAD0;
+  --color-sand:       #C4BAA8;
+  --color-terracotta: #B85C38;
+  --color-olive:      #5B7A4E;
+  --color-blue:       #2A6DB5;
+}
+
 /* Base */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
