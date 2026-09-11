@@ -291,12 +291,12 @@ export const communityOrgs: CommunityOrg[] = [
 
 // ─── REPORT CATEGORIES ───────────────────────────────────────────────────────
 export const reportCategories = [
-  { id: 'road', label: 'Road Damage', emoji: '🛣', description: 'Potholes, cracked surfaces, damaged infrastructure' },
-  { id: 'lighting', label: 'Street Lighting', emoji: '💡', description: 'Broken or missing street lights' },
-  { id: 'waste', label: 'Waste & Cleanliness', emoji: '🗑', description: 'Illegal dumping, overflowing bins, cleaning issues' },
-  { id: 'water', label: 'Water & Sewage', emoji: '💧', description: 'Water supply issues, leaks, drainage problems' },
-  { id: 'infrastructure', label: 'Infrastructure', emoji: '⚡', description: 'Electrical, communications, public utilities' },
-  { id: 'parks', label: 'Public Spaces', emoji: '🌳', description: 'Parks, squares, public gardens, playgrounds' },
-  { id: 'traffic', label: 'Traffic & Safety', emoji: '🚧', description: 'Traffic signs, road markings, safety hazards' },
-  { id: 'other', label: 'Other', emoji: '📍', description: 'Any other public concern not listed above' },
+  { id: 'road', label: 'Road Damage', icon: 'Construction', description: 'Potholes, cracked surfaces, damaged infrastructure' },
+  { id: 'lighting', label: 'Street Lighting', icon: 'Lightbulb', description: 'Broken or missing street lights' },
+  { id: 'waste', label: 'Waste & Cleanliness', icon: 'Trash2', description: 'Illegal dumping, overflowing bins, cleaning issues' },
+  { id: 'water', label: 'Water & Sewage', icon: 'Droplets', description: 'Water supply issues, leaks, drainage problems' },
+  { id: 'infrastructure', label: 'Infrastructure', icon: 'Zap', description: 'Electrical, communications, public utilities' },
+  { id: 'parks', label: 'Public Spaces', icon: 'Trees', description: 'Parks, squares, public gardens, playgrounds' },
+  { id: 'traffic', label: 'Traffic & Safety', icon: 'TriangleAlert', description: 'Traffic signs, road markings, safety hazards' },
+  { id: 'other', label: 'Other', icon: 'MoreHorizontal', description: 'Any other public concern not listed above' },
 ]

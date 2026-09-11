@@ -54,7 +54,7 @@ export default function HomePage() {
       <section style={{background:'var(--color-navy-dark)',borderBottom:'1px solid rgba(255,255,255,0.05)'}}>
         <div className="container-site">
           <div className="grid grid-cols-2 md:grid-cols-4" style={{borderRight:'1px solid rgba(255,255,255,0.05)'}}>
-            {[{v:'[Year]',l:'Municipality Est.'},{v:'[#]',l:'Active Projects'},{v:'[#]+',l:'Residents Served'},{v:'[#] km',l:'Coastline'}].map((s)=>(
+            {[{v:'1951',l:'Municipality Est.'},{v:'5',l:'Active Projects'},{v:'8,000+',l:'Residents Served'},{v:'4 km',l:'Coastline'}].map((s)=>(
               <div key={s.l} className="px-6 py-8 text-center" style={{borderLeft:'1px solid rgba(255,255,255,0.05)'}}>
                 <p className="font-serif text-2xl md:text-3xl text-white mb-1" style={{fontFamily:'var(--font-cormorant,Georgia,serif)'}}>{s.v}</p>
                 <p className="text-[10px] tracking-[0.2em] uppercase" style={{color:'rgba(255,255,255,0.3)'}}>{s.l}</p>
