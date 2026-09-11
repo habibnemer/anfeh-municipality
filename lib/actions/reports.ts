@@ -46,6 +46,16 @@ export async function getReports() {
   return (data ?? []) as any[]
 }
 
+export async function deleteReport(id: string) {
+  const { error } = await getDb()
+    .from('reports')
+    .update({ status: 'deleted' })
+    .eq('id', id)
+
+  if (error) throw new Error(error.message)
+  revalidatePath('/admin')
+}
+
 export async function updateReportStatus(id: string, status: string, adminNote?: string) {
   const { error } = await getDb()
     .from('reports')

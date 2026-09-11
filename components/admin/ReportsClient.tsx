@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useCallback, useTransition } from 'react'
-import { X, Phone, MessageSquare, Eye, AlertCircle, CheckCircle, Clock, FileText, LogOut } from 'lucide-react'
+import { X, Phone, MessageSquare, Eye, AlertCircle, CheckCircle, Clock, FileText, LogOut, Trash2 } from 'lucide-react'
 import StatusBadge from '@/components/ui/StatusBadge'
-import { updateReportStatus } from '@/lib/actions/reports'
+import { updateReportStatus, deleteReport } from '@/lib/actions/reports'
 import { logoutAdmin } from '@/lib/actions/admin'
 import type { ReportStatus } from '@/lib/types'
 
@@ -52,6 +52,15 @@ export default function ReportsClient({ initialReports }: { initialReports: Repo
       setSelected(prev => prev?.id === id ? { ...prev, status } : prev)
     })
   }, [note])
+
+  const handleDelete = useCallback((id: string) => {
+    if (!confirm('Delete this report permanently? This cannot be undone.')) return
+    startTransition(async () => {
+      await deleteReport(id)
+      setReports(prev => prev.filter(r => r.id !== id))
+      setSelected(null)
+    })
+  }, [])
 
   return (
     <div className="min-h-screen" style={{ background: '#F8F7F5' }}>
@@ -271,6 +280,18 @@ export default function ReportsClient({ initialReports }: { initialReports: Repo
               <div className="text-xs pt-4 border-t space-y-1" style={{ borderColor: 'var(--color-stone)', color: 'var(--color-limestone)' }}>
                 <p>Submitted: {fmtDate(selected.submitted_at)}</p>
                 <p>Last updated: {fmtDate(selected.updated_at)}</p>
+              </div>
+
+              {/* Delete */}
+              <div className="pt-2 border-t" style={{ borderColor: 'var(--color-stone)' }}>
+                <button
+                  onClick={() => handleDelete(selected.id)}
+                  disabled={isPending}
+                  className="w-full flex items-center justify-center gap-2 py-2.5 text-xs tracking-wider uppercase font-medium transition-colors"
+                  style={{ border: '1px solid #FCA5A5', color: '#DC2626', background: '#FEF2F2' }}
+                >
+                  <Trash2 size={12} /> Delete Report
+                </button>
               </div>
             </div>
           </div>
