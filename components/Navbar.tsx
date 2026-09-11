@@ -151,14 +151,6 @@ export default function Navbar() {
                   </Link>
                 )
               )}
-              <Link
-                href="#"
-                className={`ml-3 text-xs tracking-widest font-medium transition-colors ${
-                  scrolled ? 'text-muted hover:text-charcoal' : 'text-white/60 hover:text-white'
-                }`}
-              >
-                ع
-              </Link>
             </nav>
 
             {/* Mobile menu button */}
@@ -241,7 +233,6 @@ export default function Navbar() {
               >
                 Report an Issue
               </Link>
-              <button className="text-white/40 text-sm tracking-widest">العربية</button>
             </div>
           </nav>
         </div>
