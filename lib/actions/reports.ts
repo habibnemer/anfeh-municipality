@@ -42,7 +42,8 @@ export async function getReports() {
     .order('submitted_at', { ascending: false })
 
   if (error) throw new Error(error.message)
-  return data ?? []
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (data ?? []) as any[]
 }
 
 export async function updateReportStatus(id: string, status: string, adminNote?: string) {
