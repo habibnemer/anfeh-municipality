@@ -15,7 +15,9 @@ interface QueryBuilder {
   select: (cols?: string) => QueryBuilder
   insert: (data: SupabaseRow | SupabaseRow[]) => QueryBuilder
   update: (data: SupabaseRow) => QueryBuilder
+  delete: () => QueryBuilder
   eq: (col: string, val: unknown) => QueryBuilder
+  neq: (col: string, val: unknown) => QueryBuilder
   order: (col: string, opts?: { ascending: boolean }) => QueryBuilder
   then: (resolve: (result: { data: SupabaseRow[] | null; error: { message: string } | null }) => void) => Promise<void>
 }
@@ -44,8 +46,16 @@ function buildQuery(table: string, method: string, body?: unknown): QueryBuilder
       state.body = data
       return builder
     },
+    delete() {
+      state.method = 'DELETE'
+      return builder
+    },
     eq(col, val) {
       state.filters.push(`${col}=eq.${val}`)
+      return builder
+    },
+    neq(col, val) {
+      state.filters.push(`${col}=neq.${val}`)
       return builder
     },
     order(col, opts = { ascending: true }) {
@@ -96,6 +106,7 @@ export function getDb() {
       select: (cols = '*') => buildQuery(table, 'GET').select(cols),
       insert: (data: SupabaseRow | SupabaseRow[]) => buildQuery(table, 'POST').insert(data),
       update: (data: SupabaseRow) => buildQuery(table, 'PATCH').update(data),
+      delete: () => buildQuery(table, 'DELETE').delete(),
     }),
   }
 }

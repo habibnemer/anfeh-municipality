@@ -39,6 +39,7 @@ export async function getReports() {
   const { data, error } = await getDb()
     .from('reports')
     .select('*')
+    .neq('status', 'deleted')
     .order('submitted_at', { ascending: false })
 
   if (error) throw new Error(error.message)
@@ -49,7 +50,7 @@ export async function getReports() {
 export async function deleteReport(id: string) {
   const { error } = await getDb()
     .from('reports')
-    .update({ status: 'deleted' })
+    .delete()
     .eq('id', id)
 
   if (error) throw new Error(error.message)
