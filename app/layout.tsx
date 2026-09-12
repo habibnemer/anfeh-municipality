@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter, Noto_Kufi_Arabic } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import WhatsAppButton from '@/components/WhatsAppButton'
 import { LanguageProvider } from '@/lib/context/LanguageContext'
 
 const cormorant = Cormorant_Garamond({
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </main>
           <Footer />
+          <WhatsAppButton />
         </LanguageProvider>
       </body>
     </html>
