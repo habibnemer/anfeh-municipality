@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown, Globe } from 'lucide-react'
 import { useLanguage } from '@/lib/context/LanguageContext'
 
 export default function Navbar() {
@@ -157,12 +157,16 @@ export default function Navbar() {
               {/* Language toggle */}
               <button
                 onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
-                className={`ml-3 px-3 py-1.5 text-xs font-medium tracking-wider border transition-colors ${
-                  scrolled
-                    ? 'border-stone-300 text-charcoal hover:border-navy hover:text-navy'
-                    : 'border-white/40 text-white/80 hover:border-white hover:text-white'
-                }`}
+                title={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}
+                className="ml-4 flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-sm transition-all"
+                style={{
+                  background: scrolled ? 'var(--color-navy)' : 'rgba(255,255,255,0.18)',
+                  color: 'white',
+                  border: scrolled ? 'none' : '1px solid rgba(255,255,255,0.35)',
+                  backdropFilter: 'blur(4px)',
+                }}
               >
+                <Globe size={12} />
                 {lang === 'en' ? 'عربي' : 'EN'}
               </button>
             </nav>
@@ -171,12 +175,14 @@ export default function Navbar() {
             <div className="flex items-center gap-2 lg:hidden">
               <button
                 onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
-                className={`px-2.5 py-1 text-xs font-medium border transition-colors ${
-                  scrolled || open
-                    ? 'border-stone-300 text-charcoal'
-                    : 'border-white/40 text-white/80'
-                }`}
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-sm transition-all"
+                style={{
+                  background: scrolled || open ? 'var(--color-navy)' : 'rgba(255,255,255,0.18)',
+                  color: 'white',
+                  border: scrolled || open ? 'none' : '1px solid rgba(255,255,255,0.35)',
+                }}
               >
+                <Globe size={11} />
                 {lang === 'en' ? 'ع' : 'EN'}
               </button>
               <button
