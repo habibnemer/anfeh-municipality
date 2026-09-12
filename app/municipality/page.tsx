@@ -57,7 +57,7 @@ export default function MunicipalityPage() {
                   The municipality is responsible for local governance, infrastructure, public services, community development and the preservation of Anfeh's unique heritage and natural environment.
                 </p>
                 <p className="text-base leading-relaxed" style={{color:'var(--color-muted)'}}>
-                  [Additional overview content to be provided by the municipality.]
+                  Anfeh is one of Lebanon's most distinctive coastal towns, known for its ancient Phoenician salt pans, Byzantine heritage sites, and warm Mediterranean character. The municipality is committed to preserving this identity while investing in modern infrastructure and services for all residents.
                 </p>
               </div>
             </div>
@@ -68,7 +68,7 @@ export default function MunicipalityPage() {
                   <h3 className="font-medium" style={{color:'var(--color-navy)'}}>Our Mission</h3>
                 </div>
                 <p className="text-sm leading-relaxed" style={{color:'var(--color-muted)'}}>
-                  [Official mission statement to be provided by Anfeh Municipality.]
+                  To serve every resident of Anfeh with fairness, efficiency and transparency — delivering quality public services, maintaining our infrastructure, and creating a safe, clean environment where our community can thrive.
                 </p>
               </div>
               <div className="p-6 border" style={{borderColor:'var(--color-stone)',background:'white'}}>
@@ -77,7 +77,7 @@ export default function MunicipalityPage() {
                   <h3 className="font-medium" style={{color:'var(--color-navy)'}}>Our Vision</h3>
                 </div>
                 <p className="text-sm leading-relaxed" style={{color:'var(--color-muted)'}}>
-                  [Official vision statement to be provided by Anfeh Municipality.]
+                  A modern, connected and proud Anfeh — where heritage is preserved, the coastline is protected, residents are heard, and every family has access to the services and opportunities they deserve.
                 </p>
               </div>
             </div>

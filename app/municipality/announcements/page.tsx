@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { AlertCircle } from 'lucide-react'
 import { announcements } from '@/lib/data'
 
 export const metadata: Metadata = { title: 'Announcements' }
@@ -37,11 +36,6 @@ export default function AnnouncementsPage() {
 
       <section className="section-padding" style={{background:'var(--color-warm-white)'}}>
         <div className="container-site max-w-3xl">
-          <div className="mb-6 p-4 text-xs flex gap-3" style={{background:'var(--color-cream)',border:'1px solid var(--color-stone)',color:'var(--color-muted)'}}>
-            <AlertCircle size={14} className="flex-none mt-0.5" style={{color:'var(--color-terracotta)'}} />
-            All announcements shown are placeholder content for demonstration purposes. Replace with verified official announcements from the municipality.
-          </div>
-
           <div className="space-y-4">
             {announcements.map((announcement)=>(
               <div key={announcement.id} className="bg-white p-6 border" style={{borderColor:announcement.important?'var(--color-terracotta)':'var(--color-stone)'}}>

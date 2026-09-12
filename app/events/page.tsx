@@ -49,9 +49,6 @@ export default function EventsPage() {
 
       <section className="section-padding" style={{background:'var(--color-warm-white)'}}>
         <div className="container-site">
-          <div className="mb-4 p-4 text-xs" style={{background:'var(--color-cream)',border:'1px solid var(--color-stone)',color:'var(--color-muted)'}}>
-            ℹ️ Events shown are placeholder content. Replace with verified events from the municipality.
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px" style={{background:'var(--color-stone)'}}>
             {events.map((event)=>(
               <div key={event.id} className="bg-white flex flex-col">

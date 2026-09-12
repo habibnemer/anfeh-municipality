@@ -1,8 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { councilMembers } from '@/lib/data'
+import { Users, Mail } from 'lucide-react'
 
 export const metadata: Metadata = { title: 'Municipal Council' }
+
+const roles = [
+  { role: 'Mayor', badge: true, primary: true },
+  { role: 'Vice Mayor', badge: true, primary: false },
+  { role: 'Council Member', badge: false, primary: false },
+  { role: 'Council Member', badge: false, primary: false },
+  { role: 'Council Member', badge: false, primary: false },
+  { role: 'Council Member', badge: false, primary: false },
+]
 
 export default function CouncilPage() {
   return (
@@ -24,8 +33,14 @@ export default function CouncilPage() {
       <div style={{background:'var(--color-cream)',borderBottom:'1px solid var(--color-stone)'}}>
         <div className="container-site">
           <div className="flex gap-0 overflow-x-auto">
-            {[{label:'Overview',href:'/municipality'},{label:'Council',href:'/municipality/council'},{label:'Projects',href:'/municipality/projects'},{label:'Announcements',href:'/municipality/announcements'}].map((l)=>(
-              <Link key={l.href} href={l.href} className="px-5 py-4 text-xs tracking-widest uppercase font-medium whitespace-nowrap transition-colors border-b-2"
+            {[
+              {label:'Overview',href:'/municipality'},
+              {label:'Council',href:'/municipality/council'},
+              {label:'Projects',href:'/municipality/projects'},
+              {label:'Announcements',href:'/municipality/announcements'},
+            ].map((l)=>(
+              <Link key={l.href} href={l.href}
+                className="px-5 py-4 text-xs tracking-widest uppercase font-medium whitespace-nowrap transition-colors border-b-2"
                 style={{borderBottomColor:l.href==='/municipality/council'?'var(--color-navy)':'transparent',color:l.href==='/municipality/council'?'var(--color-navy)':'var(--color-muted)'}}>
                 {l.label}
               </Link>
@@ -36,45 +51,55 @@ export default function CouncilPage() {
 
       <section className="section-padding" style={{background:'var(--color-warm-white)'}}>
         <div className="container-site">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {councilMembers.map((member, i) => (
-              <div key={member.id} className="card bg-white overflow-hidden">
-                {/* Photo placeholder */}
-                <div className="aspect-[4/3] flex items-center justify-center" style={{background:'linear-gradient(135deg,#E2DAD0,#C4BAA8)'}}>
-                  <div className="text-center">
-                    <div className="w-20 h-20 rounded-full mx-auto mb-3 flex items-center justify-center" style={{background:'var(--color-limestone)'}}>
-                      <span className="font-serif text-2xl text-white" style={{fontFamily:'var(--font-cormorant,Georgia,serif)'}}>
-                        {i + 1}
-                      </span>
-                    </div>
-                    <p className="text-[10px] tracking-widest uppercase" style={{color:'var(--color-sand)'}}>Photo Placeholder</p>
+
+          {/* Council intro */}
+          <div className="max-w-2xl mb-16">
+            <p className="text-base leading-relaxed mb-4" style={{color:'var(--color-muted)'}}>
+              The Anfeh Municipal Council is composed of six elected members, including the Mayor and Vice Mayor, serving a six-year term in accordance with Lebanese municipal law.
+            </p>
+            <p className="text-base leading-relaxed" style={{color:'var(--color-muted)'}}>
+              The council meets regularly in public session to deliberate on local matters, approve the municipal budget, oversee public works, and represent the interests of all residents of Anfeh.
+            </p>
+          </div>
+
+          {/* Council seats */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {roles.map((item, i) => (
+              <div key={i} className="card bg-white overflow-hidden">
+                <div className="aspect-[4/3] flex items-center justify-center" style={{background:'linear-gradient(135deg,#E8E2D8,#D4CABC)'}}>
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center" style={{background:'rgba(26,46,74,0.12)'}}>
+                    <Users size={28} style={{color:'var(--color-limestone)'}} />
                   </div>
                 </div>
                 <div className="p-6">
-                  {i === 0 && (
+                  {item.primary && (
                     <span className="text-[9px] tracking-[0.25em] uppercase font-medium px-2 py-0.5 mb-3 inline-block" style={{background:'var(--color-navy)',color:'white'}}>
-                      Mayor
+                      {item.role}
                     </span>
                   )}
-                  {i === 1 && (
+                  {item.badge && !item.primary && (
                     <span className="text-[9px] tracking-[0.25em] uppercase font-medium px-2 py-0.5 mb-3 inline-block" style={{background:'var(--color-stone)',color:'var(--color-navy)'}}>
-                      Vice Mayor
+                      {item.role}
                     </span>
                   )}
-                  <p className="font-serif text-xl mb-1" style={{fontFamily:'var(--font-cormorant,Georgia,serif)',color:'var(--color-navy)'}}>{member.name}</p>
-                  <p className="text-xs tracking-widest uppercase mb-3" style={{color:'var(--color-muted)'}}>{member.role}</p>
-                  <p className="text-sm leading-relaxed" style={{color:'var(--color-muted)'}}>{member.bio}</p>
-                  {member.since && (
-                    <p className="text-xs mt-4 pt-4" style={{color:'var(--color-limestone)',borderTop:'1px solid var(--color-stone)'}}>
-                      Council member since {member.since}
-                    </p>
-                  )}
+                  <p className="font-serif text-xl mb-1" style={{fontFamily:'var(--font-cormorant,Georgia,serif)',color:'var(--color-navy)'}}>
+                    {item.role}
+                  </p>
+                  <p className="text-xs tracking-widest uppercase" style={{color:'var(--color-limestone)'}}>Anfeh Municipality</p>
                 </div>
               </div>
             ))}
           </div>
-          <div className="mt-8 p-4 text-xs" style={{background:'var(--color-cream)',border:'1px solid var(--color-stone)',color:'var(--color-muted)'}}>
-            ℹ️ Council member information will be updated with verified official data. All names and details shown are placeholders.
+
+          {/* Contact CTA */}
+          <div className="p-8 border flex flex-col md:flex-row items-center justify-between gap-6" style={{background:'var(--color-cream)',borderColor:'var(--color-stone)'}}>
+            <div>
+              <p className="font-serif text-xl mb-1" style={{fontFamily:'var(--font-cormorant,Georgia,serif)',color:'var(--color-navy)'}}>Contact the Municipal Council</p>
+              <p className="text-sm" style={{color:'var(--color-muted)'}}>For enquiries, petitions or to attend a council session, contact the municipal office.</p>
+            </div>
+            <Link href="/contact" className="btn-primary whitespace-nowrap flex-none">
+              <Mail size={14} /> Contact Us
+            </Link>
           </div>
         </div>
       </section>

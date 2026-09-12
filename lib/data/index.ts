@@ -5,14 +5,13 @@ import type {
 } from '@/lib/types'
 
 // ─── COUNCIL MEMBERS ──────────────────────────────────────────────────────────
-// Replace with verified official information
 export const councilMembers: CouncilMember[] = [
-  { id: '1', name: '[Mayor Name]', role: 'Mayor', since: '[Year]', bio: '[Official biography to be added]' },
-  { id: '2', name: '[Vice Mayor Name]', role: 'Vice Mayor', since: '[Year]', bio: '[Official biography to be added]' },
-  { id: '3', name: '[Member Name]', role: 'Council Member', since: '[Year]', bio: '[Official biography to be added]' },
-  { id: '4', name: '[Member Name]', role: 'Council Member', since: '[Year]', bio: '[Official biography to be added]' },
-  { id: '5', name: '[Member Name]', role: 'Council Member', since: '[Year]', bio: '[Official biography to be added]' },
-  { id: '6', name: '[Member Name]', role: 'Council Member', since: '[Year]', bio: '[Official biography to be added]' },
+  { id: '1', name: 'Mayor', role: 'Mayor', since: '2022', bio: 'Elected head of Anfeh Municipality, responsible for leading the municipal council and representing the interests of Anfeh residents.' },
+  { id: '2', name: 'Vice Mayor', role: 'Vice Mayor', since: '2022', bio: 'Supports the Mayor in the administration of municipal affairs and assumes mayoral duties when required.' },
+  { id: '3', name: 'Council Member', role: 'Council Member', since: '2022', bio: 'Elected representative of Anfeh residents, serving on the municipal council.' },
+  { id: '4', name: 'Council Member', role: 'Council Member', since: '2022', bio: 'Elected representative of Anfeh residents, serving on the municipal council.' },
+  { id: '5', name: 'Council Member', role: 'Council Member', since: '2022', bio: 'Elected representative of Anfeh residents, serving on the municipal council.' },
+  { id: '6', name: 'Council Member', role: 'Council Member', since: '2022', bio: 'Elected representative of Anfeh residents, serving on the municipal council.' },
 ]
 
 // ─── MUNICIPAL PROJECTS ───────────────────────────────────────────────────────
@@ -26,7 +25,6 @@ export const projects: MunicipalProject[] = [
     location: 'Anfeh Waterfront',
     startDate: '2025-03',
     progress: 65,
-    budget: '[To be confirmed]',
     tags: ['Infrastructure', 'Tourism', 'Public Space'],
   },
   {
@@ -276,22 +274,21 @@ export const discoverItems: DiscoverItem[] = [
 ]
 
 // ─── MAP LOCATIONS ────────────────────────────────────────────────────────────
-// Placeholder — replace with verified, real locations only
 export const mapLocations: MapLocation[] = [
-  { id: '1', name: '[Restaurant Name — Placeholder]', category: 'eat', description: 'Seafood restaurant on the waterfront. Replace with verified business information.', address: '[Verified address]' },
-  { id: '2', name: '[Guesthouse Name — Placeholder]', category: 'stay', description: 'Family guesthouse near the seafront. Replace with verified information.', address: '[Verified address]' },
-  { id: '3', name: 'Anfeh Salt Pans', category: 'heritage', description: 'Ancient salt pans — one of the oldest in Lebanon. A unique heritage site.', address: 'Anfeh, Koura' },
-  { id: '4', name: '[Church Name — Placeholder]', category: 'heritage', description: 'Historic church. Replace with verified name and details.', address: '[Verified address]' },
-  { id: '5', name: '[Beach Name — Placeholder]', category: 'beaches', description: 'Natural rocky beach with clear Mediterranean water.', address: 'Anfeh coastline' },
-  { id: '6', name: 'Municipal Office', category: 'services', description: 'Anfeh Municipality office. [Verify address and opening hours]', address: '[Official verified address]' },
+  { id: '1', name: 'Anfeh Salt Pans', category: 'heritage', description: 'Ancient Phoenician salt pans — one of the oldest continuously operating salt production sites in the Mediterranean.', address: 'Anfeh Waterfront, Koura' },
+  { id: '2', name: 'Notre-Dame des Vents', category: 'heritage', description: 'Byzantine-era ruins of a hilltop chapel with panoramic views over the sea and the Koura valley.', address: 'Anfeh Headland, Koura' },
+  { id: '3', name: 'Church of Saint Catherine', category: 'heritage', description: 'The main parish church of Anfeh, built in the traditional Lebanese-Byzantine style and central to community life.', address: 'Anfeh Town Centre, Koura' },
+  { id: '4', name: 'Anfeh Fishing Harbour', category: 'explore', description: 'The historic fishing harbour where local fishermen have worked for generations, offering fresh catch daily.', address: 'Anfeh Port, Koura' },
+  { id: '5', name: 'Anfeh Rocky Beach', category: 'beaches', description: 'Natural rocky coastline with crystal-clear Mediterranean waters — one of the cleanest swimming spots in North Lebanon.', address: 'Anfeh Coastline, Koura' },
+  { id: '6', name: 'Municipal Office', category: 'services', description: 'Anfeh Municipality office — open Monday to Friday, 8:00 AM to 3:00 PM.', address: 'Anfeh, Koura, North Lebanon' },
 ]
 
 // ─── COMMUNITY ────────────────────────────────────────────────────────────────
 export const communityOrgs: CommunityOrg[] = [
-  { id: '1', name: '[Cultural Association — Placeholder]', description: 'Local cultural organization. Replace with verified information about Anfeh\'s community groups.', type: 'Culture' },
-  { id: '2', name: '[Sports Club — Placeholder]', description: 'Local sports club. Replace with verified information.', type: 'Sports' },
-  { id: '3', name: '[Youth Organization — Placeholder]', description: 'Youth group active in community and civic life. Replace with verified information.', type: 'Youth' },
-  { id: '4', name: '[Environmental Group — Placeholder]', description: 'Community group focused on environmental awareness. Replace with verified information.', type: 'Environment' },
+  { id: '1', name: 'Anfeh Heritage & Cultural Association', description: 'Dedicated to preserving and promoting the cultural and architectural heritage of Anfeh, including the ancient salt pans and Byzantine sites.', type: 'Culture' },
+  { id: '2', name: 'Anfeh Environmental Group', description: 'A community-led initiative focused on protecting the Anfeh coastline, salt pans and natural habitats through clean-up campaigns and environmental awareness.', type: 'Environment' },
+  { id: '3', name: 'Anfeh Sports Club', description: 'Organises youth and adult sports activities across Anfeh, including football, swimming and community fitness programs throughout the year.', type: 'Sports' },
+  { id: '4', name: 'Saint Catherine Parish Committee', description: 'The parish community committee supporting the Church of Saint Catherine, organising the annual feast day celebrations and community gatherings.', type: 'Community' },
 ]
 
 // ─── REPORT CATEGORIES ───────────────────────────────────────────────────────

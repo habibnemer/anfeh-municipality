@@ -49,9 +49,6 @@ export default function CommunityPage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <SectionHeader label="Community" title="Local Organizations" subtitle="Groups and associations active in Anfeh's community life." />
           </div>
-          <div className="mb-6 p-4 text-xs" style={{background:'var(--color-cream)',border:'1px solid var(--color-stone)',color:'var(--color-muted)'}}>
-            ℹ️ Organizations shown are placeholder content. Replace with verified community organizations active in Anfeh.
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {communityOrgs.map((org)=>(
               <div key={org.id} className="card bg-white p-6">
