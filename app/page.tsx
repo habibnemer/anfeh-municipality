@@ -32,7 +32,7 @@ export default function HomePage() {
         <div className="relative z-10 container-site pb-20 pt-36">
           <div className="max-w-3xl">
             <p className="text-[10px] tracking-[0.4em] uppercase mb-6 animate-fade-up" style={{ color: 'rgba(255,255,255,0.4)' }}>{t.home.eyebrow}</p>
-            <h1 className="font-serif font-semibold text-white mb-6 animate-fade-up delay-100" style={{ fontFamily: lang === 'ar' ? 'var(--font-arabic, sans-serif)' : 'var(--font-cormorant,Georgia,serif)', fontSize: 'clamp(3.5rem,9vw,7rem)', lineHeight: 1, letterSpacing: '-0.02em' }}>
+            <h1 className="font-serif font-semibold text-white mb-6 animate-fade-up delay-100" style={{ fontFamily: lang === 'ar' ? 'var(--font-arabic, sans-serif)' : 'var(--font-cormorant,Georgia,serif)', fontSize: 'clamp(3.5rem,9vw,7rem)', lineHeight: 1, letterSpacing: lang === 'ar' ? '0' : '-0.02em' }}>
               {lang === 'ar' ? 'عنفه' : 'ANFEH'}
             </h1>
             <p className="font-serif mb-4 animate-fade-up delay-200" style={{ fontFamily: lang === 'ar' ? 'var(--font-arabic, sans-serif)' : 'var(--font-cormorant,Georgia,serif)', fontSize: 'clamp(1.25rem,2.5vw,1.75rem)', color: 'rgba(255,255,255,0.8)' }}>

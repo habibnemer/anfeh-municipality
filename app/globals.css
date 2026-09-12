@@ -37,9 +37,13 @@ body {
 
 [dir="rtl"] h1,
 [dir="rtl"] h2,
-[dir="rtl"] h3 {
+[dir="rtl"] h3,
+[dir="rtl"] p,
+[dir="rtl"] span,
+[dir="rtl"] a,
+[dir="rtl"] button {
   font-family: var(--font-arabic), Georgia, serif;
-  letter-spacing: 0;
+  letter-spacing: 0 !important;
 }
 
 h1, h2, h3 {
