@@ -30,7 +30,7 @@ export default function WhatsAppButton() {
   const isAr = lang === 'ar'
 
   const prefilledMsg = isAr
-    ? 'مرحباً، أتواصل مع بلدية عنفه وأودّ الاستفسار عن:'
+    ? 'مرحباً، أتواصل مع بلدية أنفه وأودّ الاستفسار عن:'
     : 'Hello, I am contacting Anfeh Municipality and would like to enquire about:'
 
   const waUrl = `https://wa.me/96171813883?text=${encodeURIComponent(prefilledMsg)}`
@@ -67,7 +67,7 @@ export default function WhatsAppButton() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-white leading-tight">
-                  {isAr ? 'بلدية عنفه' : 'Anfeh Municipality'}
+                  {isAr ? 'بلدية أنفه' : 'Anfeh Municipality'}
                 </p>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" />
@@ -91,7 +91,7 @@ export default function WhatsAppButton() {
                   : 'Hello 👋 How can we help you? Reach us directly on WhatsApp and we\'ll respond as soon as possible.'}
               </p>
               <p className="text-[10px] mt-2 text-right" style={{ color: '#A89880' }}>
-                {isAr ? 'بلدية عنفه' : 'Anfeh Municipality'}
+                {isAr ? 'بلدية أنفه' : 'Anfeh Municipality'}
               </p>
             </div>
           </div>

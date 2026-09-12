@@ -71,7 +71,7 @@ export default function Navbar() {
                 }`}
                 style={{ fontFamily: 'var(--font-cormorant, Georgia, serif)' }}
               >
-                {lang === 'ar' ? 'عنفه' : 'ANFEH'}
+                {lang === 'ar' ? 'أنفه' : 'ANFEH'}
               </span>
               <span
                 className={`text-[9px] tracking-[0.25em] uppercase font-sans transition-colors ${
@@ -200,7 +200,7 @@ export default function Navbar() {
             <Link href="/" className="flex flex-col leading-none">
               <span className="font-serif text-xl text-white tracking-wide"
                 style={{ fontFamily: 'var(--font-cormorant, Georgia, serif)' }}>
-                {lang === 'ar' ? 'عنفه' : 'ANFEH'}
+                {lang === 'ar' ? 'أنفه' : 'ANFEH'}
               </span>
               <span className="text-[9px] tracking-[0.25em] uppercase text-white/50">
                 {lang === 'ar' ? 'البلدية' : 'Municipality'}

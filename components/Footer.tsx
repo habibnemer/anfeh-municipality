@@ -37,7 +37,7 @@ export default function Footer() {
             <Link href="/" className="block mb-6">
               <p className="font-serif text-2xl tracking-wide mb-1"
                 style={{ fontFamily: lang === 'ar' ? 'var(--font-arabic, sans-serif)' : 'var(--font-cormorant, Georgia, serif)' }}>
-                {lang === 'ar' ? 'عنفه' : 'ANFEH'}
+                {lang === 'ar' ? 'أنفه' : 'ANFEH'}
               </p>
               <p className="text-[9px] tracking-[0.3em] uppercase" style={{ color: 'rgba(255,255,255,0.4)' }}>
                 {lang === 'ar' ? 'البلدية · الكورة · لبنان' : 'Municipality · Koura · Lebanon'}
@@ -124,7 +124,7 @@ export default function Footer() {
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
         <div className="container-site py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
-            © {new Date().getFullYear()} {lang === 'ar' ? 'بلدية عنفه.' : 'Anfeh Municipality.'} {t.footer.rights}
+            © {new Date().getFullYear()} {lang === 'ar' ? 'بلدية أنفه.' : 'Anfeh Municipality.'} {t.footer.rights}
           </p>
           <div className="flex items-center gap-4">
             <Link href="/contact" className="text-xs transition-colors" style={{ color: 'rgba(255,255,255,0.3)' }}>{t.footer.privacy}</Link>
