@@ -61,10 +61,10 @@ export default function Navbar() {
         }`}
       >
         <div className="container-site">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-16 md:h-20 gap-4">
 
             {/* Logo */}
-            <Link href="/" className="flex flex-col leading-none group">
+            <Link href="/" className="flex flex-col leading-none group flex-none">
               <span
                 className={`font-serif text-xl md:text-2xl font-semibold tracking-wide transition-colors ${
                   scrolled || open ? 'text-navy' : 'text-white'
@@ -83,7 +83,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-1 flex-1 justify-end">
               {navLinks.map((link) =>
                 link.children ? (
                   <div
@@ -154,37 +154,26 @@ export default function Navbar() {
                 )
               )}
 
-              {/* Language toggle */}
-              <button
-                onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
-                title={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}
-                className="ml-4 flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-sm transition-all"
-                style={{
-                  background: scrolled ? 'var(--color-navy)' : 'rgba(255,255,255,0.18)',
-                  color: 'white',
-                  border: scrolled ? 'none' : '1px solid rgba(255,255,255,0.35)',
-                  backdropFilter: 'blur(4px)',
-                }}
-              >
-                <Globe size={12} />
-                {lang === 'en' ? 'عربي' : 'EN'}
-              </button>
             </nav>
 
-            {/* Mobile: lang toggle + hamburger */}
-            <div className="flex items-center gap-2 lg:hidden">
-              <button
-                onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
-                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-sm transition-all"
-                style={{
-                  background: scrolled || open ? 'var(--color-navy)' : 'rgba(255,255,255,0.18)',
-                  color: 'white',
-                  border: scrolled || open ? 'none' : '1px solid rgba(255,255,255,0.35)',
-                }}
-              >
-                <Globe size={11} />
-                {lang === 'en' ? 'ع' : 'EN'}
-              </button>
+            {/* Language toggle — always visible, right side */}
+            <button
+              onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
+              title={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}
+              className="flex-none flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold transition-all"
+              style={{
+                background: scrolled || open ? 'var(--color-navy)' : 'rgba(255,255,255,0.2)',
+                color: 'white',
+                border: '1px solid rgba(255,255,255,0.35)',
+                borderRadius: 2,
+              }}
+            >
+              <Globe size={12} />
+              <span>{lang === 'en' ? 'عربي' : 'EN'}</span>
+            </button>
+
+            {/* Mobile: hamburger */}
+            <div className="flex items-center lg:hidden">
               <button
                 onClick={() => setOpen(!open)}
                 className="p-2 -mr-2 transition-colors"
