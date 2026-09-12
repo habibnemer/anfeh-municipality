@@ -3,10 +3,12 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { translations, Language } from '@/lib/i18n/translations'
 
+type Translations = typeof translations.en | typeof translations.ar
+
 type LanguageContextType = {
   lang: Language
   setLang: (l: Language) => void
-  t: typeof translations.en
+  t: Translations
   isRTL: boolean
 }
 
