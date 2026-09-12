@@ -4,31 +4,33 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown } from 'lucide-react'
-
-const navLinks = [
-  {
-    label: 'Municipality',
-    href: '/municipality',
-    children: [
-      { label: 'About', href: '/municipality' },
-      { label: 'Municipal Council', href: '/municipality/council' },
-      { label: 'Projects', href: '/municipality/projects' },
-      { label: 'Announcements', href: '/municipality/announcements' },
-    ],
-  },
-  { label: 'Services', href: '/services' },
-  { label: 'Discover Anfeh', href: '/discover' },
-  { label: 'Report an Issue', href: '/report' },
-  { label: 'Events', href: '/events' },
-  { label: 'News', href: '/news' },
-  { label: 'Contact', href: '/contact' },
-]
+import { useLanguage } from '@/lib/context/LanguageContext'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const pathname = usePathname()
+  const { lang, setLang, t } = useLanguage()
+
+  const navLinks = [
+    {
+      label: t.nav.municipality,
+      href: '/municipality',
+      children: [
+        { label: t.nav.about, href: '/municipality' },
+        { label: t.nav.council, href: '/municipality/council' },
+        { label: t.nav.projects, href: '/municipality/projects' },
+        { label: t.nav.announcements, href: '/municipality/announcements' },
+      ],
+    },
+    { label: t.nav.services, href: '/services' },
+    { label: t.nav.discover, href: '/discover' },
+    { label: t.nav.reportIssue, href: '/report' },
+    { label: t.nav.events, href: '/events' },
+    { label: t.nav.news, href: '/news' },
+    { label: t.nav.contact, href: '/contact' },
+  ]
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -69,14 +71,14 @@ export default function Navbar() {
                 }`}
                 style={{ fontFamily: 'var(--font-cormorant, Georgia, serif)' }}
               >
-                ANFEH
+                {lang === 'ar' ? 'عنفه' : 'ANFEH'}
               </span>
               <span
                 className={`text-[9px] tracking-[0.25em] uppercase font-sans transition-colors ${
                   scrolled || open ? 'text-muted' : 'text-white/70'
                 }`}
               >
-                Municipality
+                {lang === 'ar' ? 'البلدية' : 'Municipality'}
               </span>
             </Link>
 
@@ -85,9 +87,9 @@ export default function Navbar() {
               {navLinks.map((link) =>
                 link.children ? (
                   <div
-                    key={link.label}
+                    key={link.href}
                     className="relative"
-                    onMouseEnter={() => setActiveDropdown(link.label)}
+                    onMouseEnter={() => setActiveDropdown(link.href)}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
                     <button
@@ -102,11 +104,11 @@ export default function Navbar() {
                       {link.label}
                       <ChevronDown
                         size={12}
-                        className={`transition-transform ${activeDropdown === link.label ? 'rotate-180' : ''}`}
+                        className={`transition-transform ${activeDropdown === link.href ? 'rotate-180' : ''}`}
                       />
                     </button>
-                    {activeDropdown === link.label && (
-                      <div className="absolute top-full left-0 pt-1 animate-slide-down">
+                    {activeDropdown === link.href && (
+                      <div className={`absolute top-full pt-1 animate-slide-down ${lang === 'ar' ? 'right-0' : 'left-0'}`}>
                         <div className="bg-white border border-stone-200 shadow-lg min-w-[180px] py-1">
                           {link.children.map((child) => (
                             <Link
@@ -133,9 +135,9 @@ export default function Navbar() {
                         : scrolled
                         ? 'text-charcoal hover:text-navy'
                         : 'text-white/90 hover:text-white'
-                    } ${link.label === 'Report an Issue' ? 'ml-2' : ''}`}
+                    } ${link.href === '/report' ? 'ml-2' : ''}`}
                   >
-                    {link.label === 'Report an Issue' ? (
+                    {link.href === '/report' ? (
                       <span
                         className={`px-4 py-1.5 text-xs tracking-wider uppercase font-medium border transition-colors ${
                           scrolled
@@ -143,7 +145,7 @@ export default function Navbar() {
                             : 'border-white text-white hover:bg-white hover:text-navy'
                         }`}
                       >
-                        Report Issue
+                        {link.label}
                       </span>
                     ) : (
                       link.label
@@ -151,23 +153,47 @@ export default function Navbar() {
                   </Link>
                 )
               )}
+
+              {/* Language toggle */}
+              <button
+                onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
+                className={`ml-3 px-3 py-1.5 text-xs font-medium tracking-wider border transition-colors ${
+                  scrolled
+                    ? 'border-stone-300 text-charcoal hover:border-navy hover:text-navy'
+                    : 'border-white/40 text-white/80 hover:border-white hover:text-white'
+                }`}
+              >
+                {lang === 'en' ? 'عربي' : 'EN'}
+              </button>
             </nav>
 
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setOpen(!open)}
-              className="lg:hidden p-2 -mr-2 transition-colors"
-              aria-label={open ? 'Close menu' : 'Open menu'}
-            >
-              {open ? (
-                <X size={22} className="text-navy" />
-              ) : (
-                <Menu
-                  size={22}
-                  className={scrolled ? 'text-charcoal' : 'text-white'}
-                />
-              )}
-            </button>
+            {/* Mobile: lang toggle + hamburger */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <button
+                onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
+                className={`px-2.5 py-1 text-xs font-medium border transition-colors ${
+                  scrolled || open
+                    ? 'border-stone-300 text-charcoal'
+                    : 'border-white/40 text-white/80'
+                }`}
+              >
+                {lang === 'en' ? 'ع' : 'EN'}
+              </button>
+              <button
+                onClick={() => setOpen(!open)}
+                className="p-2 -mr-2 transition-colors"
+                aria-label={open ? 'Close menu' : 'Open menu'}
+              >
+                {open ? (
+                  <X size={22} className="text-navy" />
+                ) : (
+                  <Menu
+                    size={22}
+                    className={scrolled ? 'text-charcoal' : 'text-white'}
+                  />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -179,9 +205,11 @@ export default function Navbar() {
             <Link href="/" className="flex flex-col leading-none">
               <span className="font-serif text-xl text-white tracking-wide"
                 style={{ fontFamily: 'var(--font-cormorant, Georgia, serif)' }}>
-                ANFEH
+                {lang === 'ar' ? 'عنفه' : 'ANFEH'}
               </span>
-              <span className="text-[9px] tracking-[0.25em] uppercase text-white/50">Municipality</span>
+              <span className="text-[9px] tracking-[0.25em] uppercase text-white/50">
+                {lang === 'ar' ? 'البلدية' : 'Municipality'}
+              </span>
             </Link>
             <button onClick={() => setOpen(false)} className="p-2 -mr-2">
               <X size={22} className="text-white" />
@@ -191,12 +219,10 @@ export default function Navbar() {
           <nav className="flex-1 container-site py-8 overflow-y-auto">
             <div className="space-y-1">
               {navLinks.map((link, i) => (
-                <div key={link.label}>
+                <div key={link.href}>
                   {link.children ? (
                     <div className="mb-2">
-                      <p
-                        className="text-white/40 text-[10px] tracking-[0.3em] uppercase px-2 py-2 mt-4"
-                      >
+                      <p className="text-white/40 text-[10px] tracking-[0.3em] uppercase px-2 py-2 mt-4">
                         {link.label}
                       </p>
                       {link.children.map((child) => (
@@ -204,7 +230,7 @@ export default function Navbar() {
                           key={child.href}
                           href={child.href}
                           className="block px-4 py-3 text-white/80 hover:text-white text-lg font-light transition-colors"
-                          style={{ fontFamily: 'var(--font-cormorant, Georgia, serif)' }}
+                          style={{ fontFamily: lang === 'ar' ? 'var(--font-arabic, sans-serif)' : 'var(--font-cormorant, Georgia, serif)' }}
                         >
                           {child.label}
                         </Link>
@@ -216,7 +242,7 @@ export default function Navbar() {
                       className={`block px-2 py-3 text-xl font-light transition-colors ${
                         isActive(link.href) ? 'text-white' : 'text-white/70 hover:text-white'
                       } ${i === 0 ? 'mt-2' : ''}`}
-                      style={{ fontFamily: 'var(--font-cormorant, Georgia, serif)' }}
+                      style={{ fontFamily: lang === 'ar' ? 'var(--font-arabic, sans-serif)' : 'var(--font-cormorant, Georgia, serif)' }}
                     >
                       {link.label}
                     </Link>
@@ -231,7 +257,7 @@ export default function Navbar() {
                 className="btn-primary w-full justify-center mb-4"
                 style={{ background: 'var(--color-terracotta)' }}
               >
-                Report an Issue
+                {t.nav.reportIssue}
               </Link>
             </div>
           </nav>
